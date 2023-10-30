@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Serie de Fibonacci</title>
+</head>
+<body>
+    <div>
+        <label for="userInput">Ingresa un número para la serie de Fibonacci:</label>
+        <input type="text" id="userInput">
+        <button onclick="generateFibonacci()">Generar Serie</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        function fibonacciSeries(n) {
+            let fibSeries = [];
+            fibSeries[0] = 0;
+            fibSeries[1] = 1;
+
+            for (let i = 2; i < n; i++) {
+                fibSeries[i] = fibSeries[i - 1] + fibSeries[i - 2];
+            }
+
+            return fibSeries;
+        }
+        
+        function generateFibonacci() {
+            let userInput = document.getElementById('userInput').value;
+
+            if (isNaN(userInput) || userInput === '' || userInput === null) {
+                document.getElementById('result').innerText = "Por favor, ingresa un número válido.";
+            } else {
+                userInput = parseInt(userInput);
+                let fibonacciResult = fibonacciSeries(userInput);
+                document.getElementById('result').innerText = "Serie de Fibonacci para " + userInput + " números: " + fibonacciResult.join(", ");
+            }
+        }
+    </script>
+</body>
+</html>
+
